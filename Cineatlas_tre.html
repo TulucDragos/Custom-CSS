@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color:#f1f2f2;
+  background-color:black;
 }
 .loader {
   position:fixed;
@@ -58,8 +58,9 @@ body {
 .thumbs {
   display: block;
   padding: 5px;
-  background: #fff;
+  background: #000;
   margin-top:60px;
+  margin-bottom:30px;
 }
 .thumbs a {
   display: inline-block;
@@ -79,8 +80,13 @@ body {
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  margin: 10px 10px 0;
-  background: #fff;
+  border-bottom:1px solid #313131;
+  background: black;
+  margin-top:10px;
+}
+.item-container {
+  max-width: 1024px;
+  margin:0 auto;
 }
 html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .general, html.modal-open .item-container .details > a, html.modal-open .item-container > img {
   -webkit-filter: blur(5px);
@@ -93,6 +99,7 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   margin: 0;
   font-size: 30px;
   position: relative;
+  color:white;
 }
 .item h2 span {
   font-style: italic;
@@ -104,7 +111,8 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 .item-container > img {
   display: inline-block;
   position: relative;
-  width: 33.33333%;
+  height:120px;
+  width:80px;
 }
 .item span {
   display: block;
@@ -114,9 +122,10 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   display: inline-block;
   padding-left: 10px;
   font-size: 15px;
-  width: 66.6666%;
+  width: 90%;
   box-sizing: border-box;
   vertical-align: top;
+  color:white;
 }
 .item div.details p {
   font-size: 15px;
@@ -136,7 +145,8 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 }
 .item a {
   text-decoration: none;
-  color: #2980b9;
+  color: black;
+  background-color:#fdca00;
 }
 .item a h2 {
   font-size: 20px;
@@ -165,7 +175,7 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   display: inline-block;
   margin-left: 10px;
   cursor: pointer;
-  border: 1px solid #2980b9;
+  border: 1px solid #fdca00;
   border-radius: 5px;
   padding: 10px 15px 11px;
   margin-top: 10px;
@@ -229,7 +239,7 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-	background-color:#caa100;
+	background-color:#fdca00;
 	border-radius: 8px;
 }
 
@@ -269,7 +279,7 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   z-index: 99;
   border: none;
   outline: none;
-  background-color:#caa100;
+  background-color:#fdca00;
   color: white;
   cursor: pointer;
   padding: 15px;
@@ -277,8 +287,9 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 }
 
 #myBtn:hover {
-  background-color:#caa100;
+  background-color:#fdca00;
 }
+
 
 
 </style>
@@ -309,9 +320,11 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   <div class="thumbs">
   	
   </div>
+  
   <div align="center" class="loader">Odota hetki ole hyv&auml;...
 
   </div>
+
 
 </div>
 <div class="clear"></div>
