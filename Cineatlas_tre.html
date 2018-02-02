@@ -5,6 +5,7 @@
 <title>FINNKINO CINE ATLAS</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans,100,300,600' rel='stylesheet' type='text/css'>
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -134,7 +135,8 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   padding-left: 10px;
 }
 .item .rating img {
-  margin-right: 10px
+  margin-right: 10px;
+  height:2em;
 }
 .item .genres {
   font-weight: bold;
@@ -295,7 +297,7 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 </style>
 </head>
 <body>
-	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<button id="myBtn" title="Go to top">Top</button>
 
 	<div class="nav-bar">
 		<div class="left">
@@ -345,7 +347,10 @@ function xmlParser(xml) {
   $('.loader').fadeOut();
  }, 2000);
  var counter = 1;
+ var carousel = 1;
  $(xml).find("Event").each(function() {
+
+  console.log(carousel);
 
   // API is broken and returns films from future, let's check them
   if (filmReleased(($(this).find("dtLocalRelease").text()))) {
@@ -378,6 +383,10 @@ function xmlParser(xml) {
    $(".main").append(content);
    $(".thumbs").append(thumb);
    counter++;
+   if(counter%5==0){
+    carousel++;
+   }
+   
   }
 
  });
@@ -412,7 +421,7 @@ $('body').on('click', 'a[href*=#]:not([href=#])', function() {
   var target = $(this.hash);
   target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
   if (target.length) {
-   var top = this.hash === '#home' ? 0 : target.offset().top - 15;
+   var top = this.hash === '#home' ? 0 : target.offset().top - 65;
    $('html,body').animate({
     scrollTop: top
    }, 2000);
@@ -420,22 +429,25 @@ $('body').on('click', 'a[href*=#]:not([href=#])', function() {
   }
  }
 });
-  		// When the user scrolls down 600px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-        document.getElementById("myBtn").style.display = "block";
+$(document).ready(function(){
+  
+  //Check to see if the window is top if not then display button
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+      $('#myBtn').fadeIn();
     } else {
-        document.getElementById("myBtn").style.display = "none";
+      $('#myBtn').fadeOut();
     }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-	function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+  });
+  
+  //Click event to scroll to top
+  $('#myBtn').click(function(){
+    $('html, body').animate({scrollTop : 0},800);
+    return false;
+  });
+  
+});
 
 </script>
 </body>
