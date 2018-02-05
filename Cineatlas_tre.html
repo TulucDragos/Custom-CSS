@@ -5,6 +5,10 @@
 <title>FINNKINO CINE ATLAS</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans,100,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
+
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,6 +76,22 @@ body {
 .thumbs a img {
   width: 100%;
 }
+.thumb {
+  display: block;
+  padding: 5px;
+  background: #000;
+  margin-top:60px;
+  margin-bottom:30px;
+}
+.thumb a {
+  display: inline-block;
+  width: 12.5%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.thumb a img {
+  width: 100%;
+}
 .item {
   font-size: 0;
   display: block;
@@ -89,7 +109,7 @@ body {
   max-width: 1024px;
   margin:0 auto;
 }
-html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .general, html.modal-open .item-container .details > a, html.modal-open .item-container > img {
+html.modal-open .item-container p, html.modal-open .thumbs,html.modal-open .thumb, html.modal-open .general, html.modal-open .item-container .details > a, html.modal-open .item-container > img {
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
@@ -317,8 +337,16 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 		</div>
 	</div>
 
+
+  <div class="carousel">
+
+  </div>
+
+  
+
 <div class="main">
 
+  
   <div class="thumbs">
   	
   </div>
@@ -330,7 +358,11 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 
 </div>
 <div class="clear"></div>
-<script>$(document).ready(function() {
+<script>
+
+ var images = [];
+
+  $(document).ready(function() {
  $.ajax({
   type: "GET",
   url: "http://www.finnkino.fi/xml/Events/?area=1034&includeGallery=true",
@@ -348,9 +380,9 @@ function xmlParser(xml) {
  }, 2000);
  var counter = 1;
  var carousel = 1;
+
  $(xml).find("Event").each(function() {
 
-  console.log(carousel);
 
   // API is broken and returns films from future, let's check them
   if (filmReleased(($(this).find("dtLocalRelease").text()))) {
@@ -358,6 +390,10 @@ function xmlParser(xml) {
    var thumb = "";
    content = '<div class="item"><a name="movie' + counter + '" /><div class="item-container"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" alt="Poster"><div class="details"><div class="general"><h2>' + $(this).find("> Title").text() + ' <span>(' + $(this).find("OriginalTitle").text() + ')</span></h2></a><span class="genres">' + $(this).find("Genres").text() + ' | ' + $(this).find("LengthInMinutes").text() + ' min</span><span class="rating"><img src="' + $(this).find("RatingImageUrl").text() + '" />';
    thumb = '<a href="#movie' + counter + '"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" /></a>';
+
+    //get the thumbs in an array
+   images[counter -1] = '<a href="#movie' + counter + '"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" /></a>';
+  console.log(images[counter -1 ]);
 
    $(this).find("ContentDescriptor").each(function() {
     content += '<img src="' + $(this).find("ImageURL").text() + '" />';
@@ -378,20 +414,81 @@ function xmlParser(xml) {
     content += '</svg>';
     content += '<div class="iframe-wrapper"><iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe></div></div>';
    }
-
+  
    content += '</div></div></div>';
    $(".main").append(content);
    $(".thumbs").append(thumb);
    counter++;
-   if(counter%5==0){
-    carousel++;
-   }
+   
    
   }
 
  });
+  
+   
+
+  console.log(images.length);
+  console.log("kaka")
+
+var x = images.length;
+
+
+ x = images.length;
+  if(x <= 24)
+  {
+    for(var i = 0; i< x  ; i++)
+    {
+
+        if(i==0)
+        {
+          $(".thumbs").append("<br />");
+        }
+
+        $(".thumbs").append(images[i]);
+        console.log(images[i]);
+        console.log(i);
+
+    }
+
+  }
+  else
+  {
+    var slide = 0;
+    var car = "";
+
+    car +='<div class="owl-carousel owl-theme"><div><div class="thumb">';
+   
+    console.log(car);
+    for(var i = 0; i <x; i++)
+    {
+      console.log(i);
+      
+      car += images[i];
+      console.log(car);
+
+      if(i ==  23 + slide * 24 && x != i)
+      {
+        car += '</div></div><div><div class="thumb">';
+        slide++;
+        
+        console.log(slide);
+        console.log("dsadadasdasdasdsa")
+      }
+
+      
+    }
+    car+="</div></div></div>";
+    $(".carousel").append(car);
+
+
+  }
+
+
 
 }
+
+ 
+
 
 function filmReleased(dateTime) {
  var dateTime = dateTime.split("T");
@@ -449,6 +546,20 @@ $(document).ready(function(){
   
 });
 
+$(window).on('load',function(){
+  $(".owl-carousel").owlCarousel({
+    items:1,
+    margin:10,
+    autoHeight:true
+  });
+});
+
 </script>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
 </body>
 </html>

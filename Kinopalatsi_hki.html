@@ -1,10 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>FINNKINO KINOPALATSI HKI</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans,100,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -67,6 +70,20 @@ body {
   box-sizing: border-box;
 }
 .thumbs a img {
+  width: 100%;
+}
+.thumb {
+  display: block;
+  padding: 5px;
+  background: #fff;
+}
+.thumb a {
+  display: inline-block;
+  width: 12.5%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.thumb a img {
   width: 100%;
 }
 .item {
@@ -215,6 +232,11 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 </style>
 </head>
 <body>
+   <div class="carousel">
+
+  </div>
+
+
 <div class="main">
   <div class="thumbs"></div>
   <div align="center" class="loader">Odota hetki ole hyv&auml;...</div>
@@ -230,6 +252,10 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 });
 
 var trailer = [];
+var images = [];
+var car = "";
+car +='<div class="owl-carousel owl-theme"><div><div class="thumb">';
+
 
 function xmlParser(xml) {
 
@@ -237,10 +263,22 @@ function xmlParser(xml) {
   $('.loader').fadeOut();
  }, 2000);
  var counter = 1;
- $(xml).find("Event").each(function() {
+ var max_counter = 0;
 
+ //check how many items there are
+ $(xml).find("Event").each(function() {
+  if (filmReleased(($(this).find("dtLocalRelease").text()))) {
+    max_counter++;
+    console.log(max_counter);
+  }
+ });
+
+ console.log("================================================================");
+
+ $(xml).find("Event").each(function() {
   // API is broken and returns films from future, let's check them
   if (filmReleased(($(this).find("dtLocalRelease").text()))) {
+    
    var content = "";
    var thumb = "";
    content = '<div class="item"><a name="movie' + counter + '" /><div class="item-container"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" alt="Poster"><div class="details"><div class="general"><h2>' + $(this).find("> Title").text() + ' <span>(' + $(this).find("OriginalTitle").text() + ')</span></h2></a><span class="genres">' + $(this).find("Genres").text() + ' | ' + $(this).find("LengthInMinutes").text() + ' min</span><span class="rating"><img src="' + $(this).find("RatingImageUrl").text() + '" />';
@@ -266,15 +304,41 @@ function xmlParser(xml) {
     content += '<div class="iframe-wrapper"><iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe></div></div>';
    }
 
+   if(max_counter > 24)
+   {
+    car+=thumb;
+   }  
+
    content += '</div></div></div>';
    $(".main").append(content);
    $(".thumbs").append(thumb);
-   counter++;
+  
+  if(max_counter > 24)
+  {
+    if(counter % 24 == 0 )
+    {   
+      car+='</div></div><div><div class="thumb">';
+    }
+
+    counter++;
+
+    if(counter == max_counter)
+     {
+       car += "</div></div></div>";
+       $(".carousel").append(car);
+     }
+
+
+  }
+    
+  
   }
 
  });
 
 }
+
+  
 
 function filmReleased(dateTime) {
  var dateTime = dateTime.split("T");
@@ -313,6 +377,18 @@ $('body').on('click', 'a[href*=#]:not([href=#])', function() {
  }
 });
   
+  $(window).on('load',function(){
+  $(".owl-carousel").owlCarousel({
+    items:1,
+    margin:10,
+    autoHeight:true
+  });
+});
+
 </script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 </body>
 </html>
