@@ -5,8 +5,8 @@
 <title>FINNKINO KINOPALATSI HKI</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans,100,300,600' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
-<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.css" />
+<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css" />
 <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
 <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 
@@ -76,12 +76,12 @@ body {
   width: 100%;
 }
 .thumb {
-  display: block;
+
   padding: 5px;
   background: #fff;
 }
 .thumb a {
-  display: inline-block;
+
   width: 12.5%;
   padding: 5px;
   box-sizing: border-box;
@@ -91,19 +91,19 @@ body {
 }
 
 #carousel {
-  display: block;
   padding: 5px;
   background: #fff;
 }
 #carousel a {
-  display: inline-block;
+  
   width: 12.5%;
   padding: 5px;
-  box-sizing: border-box;
 }
 #carousel a img {
-  width: 100%;
+  max-width: 100%;
+  display:inline-block;
 }
+
 .item {
   font-size: 0;
   display: block;
@@ -116,7 +116,7 @@ body {
   margin: 10px 10px 0;
   background: #fff;
 }
-html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .general, html.modal-open .item-container .details > a, html.modal-open .item-container > img {
+html.modal-open .item-container p, html.modal-open .thumbs, #carousel, html.modal-open .general, html.modal-open .item-container .details > a, html.modal-open .item-container > img {
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
@@ -502,13 +502,14 @@ $('body').on('click', 'a[href*=#]:not([href=#])', function() {
  }
 });
   
- //   $(document).ready(function(){
- //  $(".owl-carousel").owlCarousel({
- //     items:1,
- //     margin:10,
- //     autoHeight:true
- //  });
- // });
+
+   $(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+      items:1,
+     margin:10,
+     autoHeight:true
+   });
+  });
 
   $(document).ready(function(){
   $('.your-class').slick({
