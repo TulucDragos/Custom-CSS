@@ -2,6 +2,7 @@
   "name": "",
   "version": "",
   "dependencies": {
-    "owl.carousel": "^2.2.0"
+    "owl.carousel": "^2.2.0",
+    "slick-carousel": "^1.8.1"
   }
 }

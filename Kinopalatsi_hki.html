@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
 <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
 <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -84,6 +87,21 @@ body {
   box-sizing: border-box;
 }
 .thumb a img {
+  width: 100%;
+}
+
+#carousel {
+  display: block;
+  padding: 5px;
+  background: #fff;
+}
+#carousel a {
+  display: inline-block;
+  width: 12.5%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+#carousel a img {
   width: 100%;
 }
 .item {
@@ -229,19 +247,64 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
   top:30px;
   right:50px;
 }
+.slick-slide {
+  text-align: center;
+  color: #419be0;
+  background: white;
+}
+.container {
+  margin: 0 auto;
+  padding: 40px;
+  width: 80%;
+  color: #333;
+  background: #419be0;
+}
 </style>
 </head>
+
 <body>
+
+  <div class="kaka">
+  <div class="11"><img src="https://space-facts.com/wp-content/uploads/magellanic-clouds.png"/></div>
+  <div lass="113"><img src="https://space-facts.com/wp-content/uploads/magellanic-clouds.png"/></div>
+  <div><img src="https://space-facts.com/wp-content/uploads/magellanic-clouds.png"/></div>
+</div>
+
+
+  <div class="test" style="margin-top: 100px; margin-bottom: 200px;  margin-left: 20px">
+      <div id="slider">
+        <a href="#movie1"><img src="http://media.finnkino.fi/1012/Event_11811/portrait_medium/95_1080.jpg" /></a><a href="#movie2"><img src="http://media.finnkino.fi/1012/Event_11825/portrait_medium/AllTheMoneyInTheWorld_1080.jpg" /></a><a href="#movie3"><img src="http://media.finnkino.fi/1012/Event_11761/portrait_medium/Armomurhaaja_1080.jpg" /></a><a href="#movie4"><img src="http://media.finnkino.fi/1012/Event_11737/portrait_medium/UnBeauSoleilInterieur_1080.jpg" /></a><a href="#movie5"><img src="http://media.finnkino.fi/1012/Event_11747/portrait_medium/Ballerina_1080.jpg" /></a><a href="#movie6"><img src="http://media.finnkino.fi/1012/Event_11718/portrait_medium/BorgMcEnroe_1080.jpg" /></a><a href="#movie7"><img src="http://media.finnkino.fi/1012/Event_11834/portrait_medium/CallMeByYourName_1080.jpg" /></a><a href="#movie8"><img src="http://media.finnkino.fi/1012/Event_11837/portrait_medium/LeSensDeLaFete_1080.jpg" /></a><a href="#movie9"><img src="http://media.finnkino.fi/1012/Event_11836/portrait_medium/Downsizing_1080.jpg" /></a><a href="#movie10"><img src="http://media.finnkino.fi/1012/Event_11828/portrait_medium/Ferdinand_1080.jpg" /></a><a href="#movie11"><img src="http://media.finnkino.fi/1012/Event_11829/portrait_medium/Ferdinand_1080.jpg" /></a><a href="#movie12"><img src="http://media.finnkino.fi/1012/Event_11723/portrait_medium/HeinahattuVilttitossu2_1080.jpg" /></a><a href="#movie13"><img src="http://media.finnkino.fi/1012/Event_11746/portrait_medium/MurderOnTheOrientExpress_1080.jpg" /></a><a href="#movie14"><img src="http://media.finnkino.fi/1012/Event_11603/portrait_medium/Ikitie_1080.jpg" /></a><a href="#movie15"><img src="http://media.finnkino.fi/1012/Event_11820/portrait_medium/Joulumaa_1080.jpg" /></a><a href="#movie16"><img src="http://media.finnkino.fi/1012/Event_11765/portrait_medium/Jumanji_1080u.jpg" /></a><a href="#movie17"><img src="http://media.finnkino.fi/1012/Event_11833/portrait_medium/KaikkiOikein_1080.jpg" /></a><a href="#movie18"><img src="http://media.finnkino.fi/1012/Event_11819/portrait_medium/TestrolEsLekekrol_1080.jpg" /></a><a href="#movie19"><img src="http://media.finnkino.fi/1012/Event_11846/portrait_medium/MazeRunnerTheDeathCure_1080.jpg" /></a><a href="#movie20"><img src="http://media.finnkino.fi/1012/Event_11764/portrait_medium/LadyMacbeth_1080.jpg" /></a><a href="#movie21"><img src="http://media.finnkino.fi/1012/Event_11736/portrait_medium/LovingVincent_1080.jpg" /></a><a href="#movie22"><img src="http://media.finnkino.fi/1012/Event_11839/portrait_medium/MollysGame_1080.jpg" /></a><a href="#movie23"><img src="http://media.finnkino.fi/1012/Event_11814/portrait_medium/MuumienTaikatalvi_1080saame.jpg" /></a><a href="#movie24"><img src="http://media.finnkino.fi/1012/Event_11722/portrait_medium/Paddington2_1080.jpg" /></a>
+      </div>
+      <div>
+        <a href="#movie25"><img src="http://media.finnkino.fi/1012/Event_11815/portrait_medium/Paddington2_1080.jpg" /></a><a href="#movie26"><img src="http://media.finnkino.fi/1012/Event_11822/portrait_medium/PitchPerfect3_1080t.jpg" /></a><a href="#movie27"><img src="http://media.finnkino.fi/1012/Event_11845/portrait_medium/Rodin_1080.jpg" /></a><a href="#movie28"><img src="http://media.finnkino.fi/1012/Event_11692/portrait_medium/Sameblod_1080.jpg" /></a><a href="#movie29"><img src="http://media.finnkino.fi/1012/Event_11818/portrait_medium/Solsidan_1080.jpg" /></a><a href="#movie30"><img src="http://media.finnkino.fi/1012/Event_11735/portrait_medium/StarWarsTLJ_1080t.jpg" /></a><a href="#movie31"><img src="http://media.finnkino.fi/1012/Event_11824/portrait_medium/Suburbicon_1080.jpg" /></a><a href="#movie32"><img src="http://media.finnkino.fi/1012/Event_11840/portrait_medium/Supermarsu_1080.jpg" /></a><a href="#movie33"><img src="http://media.finnkino.fi/1012/Event_11826/portrait_medium/DarkestHour_1080.jpg" /></a><a href="#movie34"><img src="http://media.finnkino.fi/1012/Event_11862/portrait_medium/Tammisunnuntai1918_1080.jpg" /></a><a href="#movie35"><img src="http://media.finnkino.fi/1012/Event_11855/portrait_medium/TheFloridaProject_1080.jpg" /></a><a href="#movie36"><img src="http://media.finnkino.fi/1012/Event_11838/portrait_medium/TheGreatestShowman_1080.jpg" /></a><a href="#movie37"><img src="http://media.finnkino.fi/1012/Event_11847/portrait_medium/ThePost_1080.jpg" /></a><a href="#movie38"><img src="http://media.finnkino.fi/1012/Event_11742/portrait_medium/TheSquare_1080.jpg" /></a><a href="#movie39"><img src="http://media.finnkino.fi/1012/Event_11727/portrait_medium/ThorRagnarok_1080.jpg" /></a><a href="#movie40"><img src="http://media.finnkino.fi/1012/Event_11691/portrait_medium/TuntematonSotilas_1080.jpg" /></a><a href="#movie41"><img src="http://media.finnkino.fi/1012/Event_11733/portrait_medium/TuntematonSotilas_1080.jpg" /></a><a href="#movie42"><img src="http://media.finnkino.fi/1012/Event_11854/portrait_medium/VeljeniVartija_1080.jpg" /></a><a href="#movie43"><img src="" /></a><a href="#movie44"><img src="http://media.finnkino.fi/1012/Event_11832/portrait_medium/Wonder_1080.jpg" /></a><a href="#movie45"><img src="http://media.finnkino.fi/1012/Event_11817/portrait_medium/WonderWheel_1080.jpg" /></a><a href="#movie46"></a>
+      </div>
+       
+  </div>
+
+  <div class="slider">
+
+
+
+  </div>
+
    <div class="carousel">
 
   </div>
 
 
 <div class="main">
-  <div class="thumbs"></div>
+
+  <div class="thumbs">
+    
+  </div>
   <div align="center" class="loader">Odota hetki ole hyv&auml;...</div>
+
 </div>
-<div class="clear"></div>
+
+<div class="clear">
+  
+</div>
+
 <script>$(document).ready(function() {
  $.ajax({
   type: "GET",
@@ -254,7 +317,9 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 var trailer = [];
 var images = [];
 var car = "";
-car +='<div class="owl-carousel owl-theme"><div><div class="thumb">';
+var slider = 1;
+var car = "";
+var final = "";
 
 
 function xmlParser(xml) {
@@ -273,16 +338,33 @@ function xmlParser(xml) {
   }
  });
 
- console.log("================================================================");
 
  $(xml).find("Event").each(function() {
+
+  //before the first thumb add the carousel head
+  if(counter == 1)
+  {
+    //owl carousel
+    $(".carousel").append('<div class="owl-carousel owl-theme"><div><div class="thumb' +slider+'" id="carousel">');
+
+    //slick
+    car+= '<div class="your-class"><div id="slider">';
+    final += car;
+  }
+
   // API is broken and returns films from future, let's check them
   if (filmReleased(($(this).find("dtLocalRelease").text()))) {
     
    var content = "";
    var thumb = "";
+
    content = '<div class="item"><a name="movie' + counter + '" /><div class="item-container"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" alt="Poster"><div class="details"><div class="general"><h2>' + $(this).find("> Title").text() + ' <span>(' + $(this).find("OriginalTitle").text() + ')</span></h2></a><span class="genres">' + $(this).find("Genres").text() + ' | ' + $(this).find("LengthInMinutes").text() + ' min</span><span class="rating"><img src="' + $(this).find("RatingImageUrl").text() + '" />';
+
    thumb = '<a href="#movie' + counter + '"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" /></a>';
+
+   car+= thumb; //get the thumb for slick carousel
+
+   final += thumb; // for testing the hard code 
 
    $(this).find("ContentDescriptor").each(function() {
     content += '<img src="' + $(this).find("ImageURL").text() + '" />';
@@ -304,33 +386,76 @@ function xmlParser(xml) {
     content += '<div class="iframe-wrapper"><iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe></div></div>';
    }
 
+   
+   //this check if there is the need for a carousel (more than 24 thumbs)
    if(max_counter > 24)
    {
-    car+=thumb;
+    
+    //appends the thumb to the X slide
+    $(".thumb"+slider).append('<a href="#movie' + counter + '"><img src="' + $(this).find("EventMediumImagePortrait").text() + '" /></a>'); 
    }  
 
    content += '</div></div></div>';
    $(".main").append(content);
    $(".thumbs").append(thumb);
   
+
+
   if(max_counter > 24)
   {
-    if(counter % 24 == 0 )
-    {   
-      car+='</div></div><div><div class="thumb">';
+    if(counter % 24 == 0 ) //if there are already 24 thumbs create the next slide and populate it 
+    { 
+      //====================================================================================
+      //slick carousel
+      final+= '</div><div>';
+
+      car+="";
+
+      $(".slider").append(car); // slick carousel (appends the first 24 thumbs to the slide)
+
+      car=""; 
+      //=====================================================================================
+
+
+      slider++;
+
+      //close the first slide and open the next one
+      $(".owl-carousel").append('</div></div><div><div class="thumb' +slider+ '"id="carousel">');
+      
     }
 
-    counter++;
+   
 
     if(counter == max_counter)
      {
-       car += "</div></div></div>";
-       $(".carousel").append(car);
+          //=====================================================
+          //appands the last slide to the carousel and populate it
+          $(".your-class").append('<div class="last" id="slider">'); // slick carousel
+
+          $(".last").append(car);
+
+          final+=car;
+
+          car=""; 
+
+          car+="</div></div>";
+
+          final+=car;
+
+          $(".your-class").append(car);
+          //=====================================================
+
+
+          //close the owl carousel
+          $(".carousel").append("</div></div></div>");
+
+          console.log(final);
      }
 
 
   }
     
+     counter++;
   
   }
 
@@ -377,11 +502,36 @@ $('body').on('click', 'a[href*=#]:not([href=#])', function() {
  }
 });
   
-  $(window).on('load',function(){
-  $(".owl-carousel").owlCarousel({
-    items:1,
-    margin:10,
-    autoHeight:true
+ //   $(document).ready(function(){
+ //  $(".owl-carousel").owlCarousel({
+ //     items:1,
+ //     margin:10,
+ //     autoHeight:true
+ //  });
+ // });
+
+  $(document).ready(function(){
+  $('.your-class').slick({
+    adaptiveHeight:true,
+    appendDots:true
+  });
+});
+
+    $(document).ready(function(){
+  $('.test').slick({
+    adaptiveHeight:true,
+    arrows:true,
+    dots:true,
+  });
+});
+
+      $(document).ready(function(){
+  $('.kaka').slick({
+    adaptiveHeight:true,
+    arrows:true,
+   
+    dots:true,
+
   });
 });
 
@@ -390,5 +540,6 @@ $('body').on('click', 'a[href*=#]:not([href=#])', function() {
 <script src="node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
 </body>
 </html>
