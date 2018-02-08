@@ -115,6 +115,7 @@ body {
 #carousel {
   padding: 5px;
   background: #000;
+  min-height: 100%;
 }
 #carousel a { 
   width: 12.5%;
@@ -361,6 +362,7 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 
 .carousel{
   margin-top: 100px;
+  height:100%;
 }
 
 @media only screen and (max-width:386px)
@@ -394,8 +396,21 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
       <ul>
         <li>
           <select name="TheaterArea" id="selectBox" onchange="changeFunc();">
-            <option value="1">First option </option>
-            <option value="2">Second option </option>
+            <option>Select Cinema</option>
+            <option value="1034">Cineatlas_tre </option>
+            <option value="1015">Fantasia_jkl </option>
+            <option value="1013">Flamingo_van </option>
+            <option value="1039">Isoomena_esp </option>
+            <option value="1031">Kinopalatsi_hki </option>
+            <option value="1022">Kinopalatsi_tku </option>
+            <option value="1017">Kuvapalatsi_lah </option>
+            <option value="1018">Plaza_oul </option>
+            <option value="1035">Plevna_tre </option>
+            <option value="1019">Promenadi_por </option>
+            <option value="1016">Scala_kuo </option>
+            <option value="1038">Sello_esp </option>
+            <option value="1041">Strand_lpr </option>
+            <option value="1033">Tennispalatski_hki </option>
           </select>
         </li>
 
@@ -427,21 +442,29 @@ html.modal-open .item-container p, html.modal-open .thumbs, html.modal-open .gen
 
 <script>
 
+  var theaterArea = 1031;
+  var stored = 0;
+
   function changeFunc() {
+    var theaterArea = 0;
     var selectBox = document.getElementById("selectBox");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    alert(selectedValue);
-    var someVarName = selectedValue;
-    localStorage.setItem("someVarName", someVarName);
-    var stored = localStorage.getItem("someVarName");
-    alert(stored);
+    var theaterArea = selectBox.options[selectBox.selectedIndex].value;    
+    var tArea = theaterArea;
+    localStorage.setItem("TheaterArea", tArea);
+    var theaterArea = localStorage.getItem("TheaterArea");  
     setTimeout("location.reload(true);",200);
    }
+  
+   var stored = localStorage.getItem("TheaterArea");
+   if(stored != null)
+   {
+    theaterArea = stored;
+   }   
 
   $(document).ready(function() {
  $.ajax({
   type: "GET",
-  url: "http://www.finnkino.fi/xml/Events/?area=1031&includeGallery=true",
+  url: "http://www.finnkino.fi/xml/Events/?area=" +theaterArea+ "&includeGallery=true",
   dataType: "xml",
   success: xmlParser
  });
